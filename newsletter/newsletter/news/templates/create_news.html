@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<div class="card p-3">
+  <h1 class="card-title d-flex justify-content-center">Create News</h1>
+  <br />
+  <div class="form-group card-body">
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_p }}
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-success">Create</button>
+        &nbsp;
+        <a href="/" class="btn btn-danger">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

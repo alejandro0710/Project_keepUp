@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container p-4">
+  <div class="row p-2 d-flex justify-content-center">
+    {% if object_list %} {% for news in object_list %}
+    <a
+      class="hoverCard card p-0 m-3 d-flex"
+      style="
+        width: 260px;
+        text-decoration: none;
+        color: #000;
+        box-shadow: 0px 0px 20px 0px rgb(99, 99, 99);
+        transition: 500ms;
+      "
+      href="{% url 'news-detail' news.pk %}"
+    >
+      {% if news.header_image %}
+      <img
+        class="card-img-top"
+        src="{{news.header_image.url }}"
+        alt="{{news.title }}"
+        style="object-fit: cover"
+      />
+      {% endif %}
+      <div class="h-50 d-flex flex-column justify-content-center">
+        <p class="m-2"><strong>{{ news.title }}</strong></p>
+        <span class="p-2" style="color: rgb(90, 89, 89)">
+          {{ news.date_created }}
+        </span>
+      </div>
+    </a>
+    {% endfor %} {% else %}
+    <div
+      class="d-flex justify-content-center align-items-center flex-column p-5"
+    >
+      <h1>There are no news to show.</h1>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
